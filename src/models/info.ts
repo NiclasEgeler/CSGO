@@ -3,7 +3,7 @@ export interface ServerInfo {
   header: string;
 
   /** Protocol version used by the server.*/
-  procotol: number;
+  protocol: number;
 
   /** Name of the server.*/
   name: string;
