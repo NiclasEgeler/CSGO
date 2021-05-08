@@ -10,6 +10,7 @@ export class Reader {
       }
     }
     this.index = 4; //skip base
+    
   }
 
   public readByte(): number {
@@ -17,28 +18,23 @@ export class Reader {
   }
 
   public readInt(): number {
-    return +new Number(this.nextSub(2));
+    var sub = this.nextSub(2);
+    return +new Number(this.getHexFromBuffer(sub));
   }
 
   public readShort(): number {
-    return +new Number(this.nextSub(2));
+    var sub = this.nextSub(2);
+    return +new Number(this.getHexFromBuffer(sub));
   }
 
   public readLong(): number {
-    return +new Number(this.nextSub(4));
+    var sub = this.nextSub(4);
+    return +new Number(this.getHexFromBuffer(sub));
   }
 
   public readLongLong(): bigint {
     var sub = this.nextSub(8);
-    var hex: string[] = [];
-    for (var i of sub) {
-      var h: string = i.toString(16);
-      if (h.length % 2) {
-        h = "0" + h;
-      }
-      hex.push(h);
-    }
-    return BigInt("0x" + hex.join(""));
+    return BigInt(this.getHexFromBuffer(sub));
   }
 
   public readString(): string {
@@ -46,16 +42,34 @@ export class Reader {
     while (this.buffer[this.index + len] != 0x00) {
       len++;
     }
-    len++;
-    return new TextDecoder().decode(this.nextSub(len));
+    var ret = new TextDecoder().decode(this.nextSub(len));
+    this.index++;
+    return ret;
+  }
+
+  private getHexFromBuffer(buffer: Uint8Array) : string {
+    var hex: string[] = [];
+    buffer = buffer.reverse();
+    for (var i of buffer) {
+      var h: string = i.toString(16);
+      if (h.length % 2) {
+        h = "0" + h;
+      }
+      hex.push(h);
+    }
+    return "0x" + hex.join("");
   }
 
   private nextSub(len: number): Uint8Array {
     this.index += len;
-    if (this.index >= this.buffer.length) {
+    if (this.index > this.buffer.length) {
       throw new Error("Index out of Bounds");
     }
     const ret = this.buffer.subarray(this.index - len, this.index);
     return ret;
+  }
+
+  public hasNext(): boolean {
+    return this.index < this.buffer.length
   }
 }
