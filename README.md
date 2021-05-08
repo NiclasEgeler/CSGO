@@ -1,4 +1,4 @@
 # CSGO Source API
 
-Query information from a running game server using UDP/IP packets.
+Query information from a running source based game server.
 
