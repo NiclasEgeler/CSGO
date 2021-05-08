@@ -29,9 +29,16 @@ export class Reader {
   }
 
   public readLongLong(): bigint {
-    throw new Error("Not implemented!");
     var sub = this.nextSub(8);
-    return -1n;
+    var hex: string[] = [];
+    for (var i of sub) {
+      var h: string = i.toString(16);
+      if (h.length % 2) {
+        h = "0" + h;
+      }
+      hex.push(h);
+    }
+    return BigInt("0x" + hex.join(""));
   }
 
   public readString(): string {
