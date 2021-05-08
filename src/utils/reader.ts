@@ -10,7 +10,6 @@ export class Reader {
       }
     }
     this.index = 4; //skip base
-    
   }
 
   public readByte(): number {
@@ -37,6 +36,15 @@ export class Reader {
     return BigInt(this.getHexFromBuffer(sub));
   }
 
+  public readUint8(len: number): Uint8Array {
+    return this.nextSub(len);
+  }
+
+  public readFloat(): number {
+    var sub = this.nextSub(4);
+    return this.parseFloat(this.getHexFromBuffer(sub));
+  }
+
   public readString(): string {
     var len = 0;
     while (this.buffer[this.index + len] != 0x00) {
@@ -47,7 +55,7 @@ export class Reader {
     return ret;
   }
 
-  private getHexFromBuffer(buffer: Uint8Array) : string {
+  private getHexFromBuffer(buffer: Uint8Array): string {
     var hex: string[] = [];
     buffer = buffer.reverse();
     for (var i of buffer) {
@@ -60,6 +68,30 @@ export class Reader {
     return "0x" + hex.join("");
   }
 
+  // from https://gist.github.com/laerciobernardo/498f7ba1c269208799498ea8805d8c30
+  private parseFloat(str: string): number {
+    var float = 0.0, sign, mantiss, exp, int = 0.0, multi = 1;
+    if (/^0x/.exec(str)) {
+      int = parseInt(str, 16);
+    } else {
+      for (var i = str.length - 1; i >= 0; i -= 1) {
+        if (str.charCodeAt(i) > 255) {
+          throw new Error("Wrong string parameter");
+        }
+        int += str.charCodeAt(i) * multi;
+        multi *= 256;
+      }
+    }
+    sign = (int >>> 31) ? -1 : 1;
+    exp = (int >>> 23 & 0xff) - 127;
+    mantiss = ((int & 0x7fffff) + 0x800000).toString(2);
+    for (i = 0; i < mantiss.length; i += 1) {
+      float += parseInt(mantiss[i]) ? Math.pow(2, exp) : 0;
+      exp--;
+    }
+    return float * sign;
+  }
+
   private nextSub(len: number): Uint8Array {
     this.index += len;
     if (this.index > this.buffer.length) {
@@ -70,6 +102,6 @@ export class Reader {
   }
 
   public hasNext(): boolean {
-    return this.index < this.buffer.length
+    return this.index < this.buffer.length;
   }
 }

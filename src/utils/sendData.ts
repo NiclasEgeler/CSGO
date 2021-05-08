@@ -19,7 +19,6 @@ export async function sendData(
       resolve(buffer);
     });
   });
-
   socket.send(data, { transport: "udp", port: port, hostname: ip });
 
   return retPromise;

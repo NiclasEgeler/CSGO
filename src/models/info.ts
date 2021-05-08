@@ -1,5 +1,5 @@
 export interface ServerInfo {
-  /** Always equal to 'I' (0x49) */
+  /** Always equal to 'I' (0x49).*/
   header: string;
 
   /** Protocol version used by the server.*/

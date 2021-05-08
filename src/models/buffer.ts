@@ -1,5 +1,4 @@
-var BASE: Uint8Array = new Uint8Array([0xFF, 0xFF, 0xFF, 0xFF]);
-var A2S_INFO: Uint8Array = new Uint8Array([
+const A2S_INFO: Uint8Array = new Uint8Array([
   0xFF,
   0xFF,
   0xFF,
@@ -26,16 +25,19 @@ var A2S_INFO: Uint8Array = new Uint8Array([
   0x79,
   0x00,
 ]);
-var A2S_PLAYER: Uint8Array = new Uint8Array([
+const A2S_PLAYER: Uint8Array = new Uint8Array([
   0xFF,
   0xFF,
   0xFF,
   0xFF,
   0x55,
+]);
+
+const CHALLENGE: Uint8Array = new Uint8Array([
   0xFF,
   0xFF,
   0xFF,
   0xFF,
 ]);
 
-export { A2S_INFO, A2S_PLAYER, BASE };
+export { A2S_INFO, A2S_PLAYER, CHALLENGE };
