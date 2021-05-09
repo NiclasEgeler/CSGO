@@ -1,4 +1,4 @@
-# CSGO Source API
+# Source API
 
 Query information from a running source based game server.
 
@@ -19,6 +19,12 @@ The Server reponds to :
 `A2S_RULES` (broken since CSGO update 1.32.3.0 Feb 21, 2014)
 </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The rules the server is using.
+
+Requiered Flags to run:
+</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`--allow-net`
+</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`--unstable`
 
 ## Example usage
 
