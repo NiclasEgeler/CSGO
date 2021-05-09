@@ -1,6 +1,6 @@
-# Source API
+<h1 align="center"> Source API </h1>
 
-Query information from a running source based game server.
+<p align="center"> Query information from a running source based game server. </p>
 
 ## Introduction
 
