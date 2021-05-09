@@ -18,7 +18,7 @@ interface Player {
 
   /** Player's score (usually "frags" or "kills").*/
   score: number;
-    
+
   /** Time (in seconds) player has been connected to the server.*/
   duration: number;
 }
