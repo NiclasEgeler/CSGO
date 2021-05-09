@@ -25,12 +25,21 @@ const A2S_INFO: Uint8Array = new Uint8Array([
   0x79,
   0x00,
 ]);
+
 const A2S_PLAYER: Uint8Array = new Uint8Array([
   0xFF,
   0xFF,
   0xFF,
   0xFF,
   0x55,
+]);
+
+const A2S_RULES: Uint8Array = new Uint8Array([
+  0xFF,
+  0xFF,
+  0xFF,
+  0xFF,
+  0x56,
 ]);
 
 const CHALLENGE: Uint8Array = new Uint8Array([
@@ -40,4 +49,4 @@ const CHALLENGE: Uint8Array = new Uint8Array([
   0xFF,
 ]);
 
-export { A2S_INFO, A2S_PLAYER, CHALLENGE };
+export { A2S_INFO, A2S_PLAYER, A2S_RULES, CHALLENGE };
