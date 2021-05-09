@@ -22,9 +22,9 @@ The Server reponds to :
 
 Requiered Flags to run:
 </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`--allow-net`
+`--allow-net`
 </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`--unstable`
+`--unstable`
 
 ## Example usage
 
