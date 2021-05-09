@@ -14,7 +14,7 @@ export async function sendData(
   var p = deferred<Uint8Array>();
   var timeout = setTimeout(
     () => p.reject("Source server did not respond in time"),
-    1000,
+    100000,
   );
   socket.receive().then(([buffer, _]) => {
     clearTimeout(timeout);
