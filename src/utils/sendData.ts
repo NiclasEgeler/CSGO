@@ -16,7 +16,7 @@ export async function sendData(
     () => p.reject("Source server did not respond in time"),
     1000,
   );
-  socket.receive().then(([buffer, addr]) => {
+  socket.receive().then(([buffer, _]) => {
     clearTimeout(timeout);
     p.resolve(buffer);
   });
