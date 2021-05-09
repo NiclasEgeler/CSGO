@@ -1,11 +1,11 @@
 import { sendData } from "../utils/sendData.ts";
 import { A2S_INFO } from "../models/buffer.ts";
 import { Reader } from "../utils/reader.ts";
-import { ServerInfo } from "../models/info.ts";
+import { IServerInfo } from "../models/info.ts";
 
-export async function getInfo(ip: string, port: number): Promise<ServerInfo> {
+export async function getInfo(ip: string, port: number): Promise<IServerInfo> {
   const reader = new Reader(await sendData(A2S_INFO, ip, port));
-  const serverInfo: ServerInfo = {
+  const serverInfo: IServerInfo = {
     header: String.fromCharCode(reader.readByte()),
     protocol: reader.readByte(),
     name: reader.readString(),

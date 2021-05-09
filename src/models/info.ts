@@ -1,4 +1,4 @@
-export interface ServerInfo {
+export interface IServerInfo {
   /** Always equal to 'I' (0x49).*/
   header: string;
 

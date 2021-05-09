@@ -1,4 +1,4 @@
-export interface Players {
+export interface IPlayers {
   /** Always equal to 'D' (0x44).*/
   header: string;
 
