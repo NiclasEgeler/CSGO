@@ -1,3 +1,7 @@
+<p align="center">
+  <img  src="./logo.png" alt="Logo" width="130"/>
+</p>
+
 <h1 align="center"> Source API </h1>
 
 <p align="center"> Query information from a running source based game server. </p>
@@ -20,7 +24,7 @@ The Server reponds to :
 </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The rules the server is using.
 
-Requiered Flags to run:
+Required Flags to run:
 </br>
 `--allow-net`
 </br>
